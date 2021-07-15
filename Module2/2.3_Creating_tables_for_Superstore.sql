@@ -1,4 +1,10 @@
+-- Create all tables task 2.3 
+
 DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS people;
+DROP TABLE IF EXISTS returns;
+
+
 CREATE TABLE orders(
    row_id        INTEGER  NOT NULL PRIMARY KEY,
    order_id      VARCHAR(20) NOT NULL,
@@ -23,3 +29,13 @@ CREATE TABLE orders(
    profit        NUMERIC(21,16) NOT NULL
 );
 set datestyle to 'ISO, MDY';
+
+CREATE TABLE people(
+  person VARCHAR(30) NOT NULL PRIMARY KEY,
+  region VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE returns(
+   returned   VARCHAR(7) NOT NULL,
+   order_id   VARCHAR(25) NOT NULL
+);
