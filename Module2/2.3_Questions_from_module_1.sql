@@ -1,9 +1,6 @@
-select * from orders o limit 10
-select count(*) from orders o 
-
 /*Total sales*/
-select count(distinct sales) 
-  from orders o 
+		select count(distinct sales) 
+		  from orders o 
 
 /*Total profit*/
 		select sum(profit)
@@ -46,17 +43,17 @@ select count(distinct sales)
 		  from orders
 	  group by customer_name
 	  order by customer_name;
-/*Customer Ranking*/
-     
+/*Customer Ranking. Top 10*/
+     select customer_name as "Top customers", sum(profit) as "Total profit"
+       from orders o 
+   group by customer_name
+   order by sum(profit) desc
+   limit 10;
+	 
 /*Sales per region*/
-     
-     
-     SELECT 	
-	EXTRACT(YEAR FROM order_date) as sale_month
-	,EXTRACT(MONTH FROM order_date) as sale_month
-	,category
-	,round(SUM(sales), 2) AS sales
-FROM orders
-group by 1,2,3
-order by 1,2
+     select region as "Region", sum(sales)
+       from orders
+   group by region 
+   order by sum(sales) desc;
+
 	
