@@ -56,64 +56,29 @@
 
 	
 		/*sales facts inserts */
- 			select * from orders o limit 10
  			
- 			
- 			
- 	     select public.orders.order_id, 
- 	     		public.orders.quantity, 
- 	     		public.orders.discount, 
- 	     		public.orders.profit, 
- 	     		public.orders.sales, 
- 	     		retail_usa.customer_dim.customer_id, 
- 	     		retail_usa.location_dim.location_id, 
- 	     		retail_usa.shipping_mode_dim.ship_id, 
- 	     		retail_usa.date_order_dim.date_id, 
- 	     		retail_usa.product_dim.product_id, 
- 	     		retail_usa.ship_date_dim.ship_date_id 
- 	       from public.orders
- 	 inner join retail_usa.customer_dim on public.orders.customer_id = retail_usa.customer_dim.customer_uid 
- 	 inner join retail_usa.location_dim on public.orders.postal_code = retail_usa.location_dim.postal_code 
- 	 inner join retail_usa.shipping_mode_dim on public.orders.ship_mode = retail_usa.shipping_mode_dim.ship_mode 
- 	 inner join retail_usa.date_order_dim on public.orders.order_date = retail_usa.date_order_dim.order_date 
- 	 inner join retail_usa.product_dim on public.orders.product_id = retail_usa.product_dim.product_uid 
- 	 inner join retail_usa.ship_date_dim on public.orders.ship_date = retail_usa.ship_date_dim.ship_date
- 			
- 			
- 	 		 select public.orders.order_id, 
-	 	     		public.orders.quantity, 
-	 	     		public.orders.discount, 
-	 	     		public.orders.profit, 
-	 	     		public.orders.sales,
-	 	     		retail_usa.customer_dim.customer_id,
-	 	     		retail_usa.location_dim.location_id,
-	 	     		retail_usa.shipping_mode_dim.ship_id,
-	 	     		retail_usa.date_order_dim.date_id,
-	 	     		retail_usa.product_dim.product_id,
-	 	     		retail_usa.ship_date_dim.ship_date_id
- 	     	  from public.orders
-     	  inner join retail_usa.customer_dim on public.orders.customer_id = retail_usa.customer_dim.customer_uid
-     	  inner join retail_usa.location_dim on public.orders.postal_code = retail_usa.location_dim.postal_code and public.orders.city = retail_usa.location_dim.city
-     	  inner join retail_usa.shipping_mode_dim on public.orders.ship_mode = retail_usa.shipping_mode_dim.ship_mode
-     	  inner join retail_usa.date_order_dim on public.orders.order_date = retail_usa.date_order_dim.order_date
-     	  inner join retail_usa.product_dim on public.orders.product_id = retail_usa.product_dim.product_uid and public.orders.product_name = retail_usa.product_dim.product_name 
-     	  inner join retail_usa.ship_date_dim on public.orders.ship_date = retail_usa.ship_date_dim.ship_date 
-     	  order by public.orders.profit 
-     	  			 
- 	 
- 	 			select * from retail_usa.product_dim where product_id > 1750 order by product_id asc
- 			select public.orders.order_id, retail_usa.customer_dim.customer_id, retail_usa.customer_dim.customer_uid 
- 			from public.orders 
- 			inner join retail_usa.customer_dim on public.orders.customer_id = retail_usa.customer_dim.customer_uid order by order_id limit 10
- 			
- 			select * from public.orders order by order_id limit 10
- 			select * from customer_dim cd 
- 			 
- 			select 
- 			select count(ship_date) from orders group by ship_date order by count(ship_date) desc
- 			
- 			select ship_date from ship_date_dim group by ship_date order by count(ship_date)  desc
- 			
- 			
- 			
-  	
+	  INSERT INTO retail_usa.sales_fact(order_uid, quantity, discount, profit, sales, customer_id, location_id, ship_id, date_id, product_id, ship_date_id)
+	  select public.orders.order_id, 
+			 public.orders.quantity, 
+			 public.orders.discount, 
+			 public.orders.profit, 
+			 public.orders.sales,
+			 retail_usa.customer_dim.customer_id,
+			 retail_usa.location_dim.location_id,
+			 retail_usa.shipping_mode_dim.ship_id,
+			 retail_usa.date_order_dim.date_id,
+			 retail_usa.product_dim.product_id,
+			 retail_usa.ship_date_dim.ship_date_id
+	    from public.orders
+	   inner join retail_usa.customer_dim on public.orders.customer_id = retail_usa.customer_dim.customer_uid
+	   inner join retail_usa.location_dim on public.orders.postal_code = retail_usa.location_dim.postal_code and public.orders.city = retail_usa.location_dim.city
+	   inner join retail_usa.shipping_mode_dim on public.orders.ship_mode = retail_usa.shipping_mode_dim.ship_mode
+	   inner join retail_usa.date_order_dim on public.orders.order_date = retail_usa.date_order_dim.order_date
+	   inner join retail_usa.product_dim on public.orders.product_id = retail_usa.product_dim.product_uid and public.orders.product_name = retail_usa.product_dim.product_name 
+	   inner join retail_usa.ship_date_dim on public.orders.ship_date = retail_usa.ship_date_dim.ship_date
+	   ORDER BY public.orders.order_id
+
+	   /*check insertion to sales fact table*/
+	   
+	   select * from retail_usa.sales_fact sf 
+	   
