@@ -3,10 +3,17 @@ import xlrd as xl
 import psycopg2
 import datetime
 import re
+import easygui
 
 c_name = input("Username: ")
 c_password = input("Password: ")
 c_host = str(input("Hostname: ") or "127.0.0.1")
+
+#choose the scheme. if you don't use any special schema just press enter for default schema
+schema_name = str(input("Scheme name: ") or "public")
+
+#select file
+path = easygui.fileopenbox()
 
 #regexes
 #^\d+$ - check if number from integer
@@ -20,7 +27,7 @@ connect = psycopg2.connect(user = c_name, password = c_password, host = c_host, 
 cur = connect.cursor()
 
 #Open workbook (excel file)
-book = xl.open_workbook('D:\\git_projects\\DataLearn\\DE-101\\Module2\\Sample.xls')
+book = xl.open_workbook(path)
 
 #Handling each row for insert it to table 
 for num_sheet in range(0, book.nsheets):
@@ -35,10 +42,12 @@ for num_sheet in range(0, book.nsheets):
     table_headers = sh.row_values(0)
 
     #Replace all spaces in each list element
-    table_headers = [f"{el}".replace(" ", "_") for el in table_headers]    
+    table_headers = [f"{el}".replace(" ", "_") for el in table_headers]
+
+    insert_all_data = ""
 
     #Template for all sheets query string 
-    query_table = f"INSERT INTO {sh.name}(" + ", ".join(table_headers).lower() + ") VALUES("
+    query_table = f"INSERT INTO {schema_name}.{sh.name}(" + ", ".join(table_headers).lower() + ") VALUES("
 
     for row in range(1, sh.nrows):
         
@@ -70,12 +79,20 @@ for num_sheet in range(0, book.nsheets):
             else:
                 tmp_list.append(f'\'{current_cell}\'')
         
-        #Execute query
-        cur.execute(query_table + ", ".join(tmp_list) + ");")
-        #Make chaneges in database permanent
-        connect.commit()
+        #concat query 
+        insert_all_data = insert_all_data + query_table + ", ".join(tmp_list) + ");"
+
         #Clear tmp list every iteration
         tmp_list.clear()
+    
+    #Execute query
+    cur.execute(insert_all_data)
+
+    #Make chaneges in database permanent
+    connect.commit()
+
+    #Workbook insert string
+    insert_all_data = ""
 
 #close connection
 cur.close()
