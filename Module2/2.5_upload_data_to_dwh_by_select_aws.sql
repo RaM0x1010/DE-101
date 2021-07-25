@@ -82,3 +82,47 @@
 	   
 	   select * from dwh.sales_fact sf 
 	   
+	   
+	   /*full table */
+	   
+	   select customer_dim.customer_uid, 
+			  customer_dim.customer_name,
+			  customer_dim.segment, 
+			  date_order_dim.order_date, 
+			  date_order_dim.year, 
+			  date_order_dim.quarter,
+			  date_order_dim.month,
+			  date_order_dim.week,
+			  date_order_dim.day,
+			  location_dim.country_name,
+			  location_dim.state,
+			  location_dim.city,
+			  location_dim.region,
+			  location_dim.postal_code,
+			  product_dim.product_uid,
+			  product_dim.category,
+			  product_dim.subcategory,
+			  product_dim.product_name,
+			  sales_fact.order_uid,
+			  sales_fact.quantity,
+			  sales_fact.discount,
+			  sales_fact.profit,
+			  sales_fact.sales,
+			  ship_date_dim.ship_date,
+			  ship_date_dim.year,
+			  ship_date_dim.quarter,
+			  ship_date_dim.month,
+			  ship_date_dim.week,
+			  ship_date_dim.day,
+			  shipping_mode_dim.ship_mode
+		from dwh.sales_fact
+	   inner join dwh.customer_dim on dwh.sales_fact.customer_id = dwh.customer_dim.customer_id 
+	   inner join dwh.location_dim on dwh.sales_fact.location_id = dwh.location_dim.location_id
+	   inner join dwh.shipping_mode_dim on dwh.sales_fact.ship_id = dwh.shipping_mode_dim.ship_id 
+	   inner join dwh.date_order_dim on dwh.sales_fact.date_id = dwh.date_order_dim.date_id 
+	   inner join dwh.product_dim on dwh.sales_fact.product_id = dwh.product_dim.product_id  
+	   inner join dwh.ship_date_dim on dwh.sales_fact.ship_date_id = dwh.ship_date_dim.ship_date_id;
+	   
+	   
+	   
+	   
