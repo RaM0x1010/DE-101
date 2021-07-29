@@ -23,10 +23,10 @@
 	
 	
 ## Концептуальная модель
-![Conceptual model](https://github.com/RaM0x1010/DE-101/blob/master/Module2/2.4.%20Conceptual_model.jpg)
+![Conceptual model](https://github.com/RaM0x1010/DE-101/blob/master/Module2/2.4/2.4.%20Conceptual_model.jpg)
 ## Логическая модель
-![Logical model](https://github.com/RaM0x1010/DE-101/blob/master/Module2/2.4.%20Logical_model.jpg)
+![Logical model](https://github.com/RaM0x1010/DE-101/blob/master/Module2/2.4/2.4.%20Logical_model.jpg)
 ## Физическая модель
-![Physics model](https://github.com/RaM0x1010/DE-101/blob/master/Module2/2.4.%20Physics_model.jpg)
+![Physics model](https://github.com/RaM0x1010/DE-101/blob/master/Module2/2.4/2.4.%20Physics_model.jpg)
 ## Дашборд
-![Dashboard](https://github.com/RaM0x1010/DE-101/blob/master/Module2/2.6.%20SuperStore_Dashboard.jpg)
+![Dashboard](https://github.com/RaM0x1010/DE-101/blob/master/Module2/2.6/2.6.%20SuperStore_Dashboard.jpg)
