@@ -66,7 +66,7 @@ for num_sheet in range(0, book.nsheets):
                 replace_quotes = current_cell.replace("'", "''")
                 tmp_list.append(f'\'{replace_quotes}\'')
             
-            #Special checker for the Orders table for datetime type cell. Retrive date and convert it to readable format and append to tmp_list with single quotes
+            #Special checker for the Orders table for datetime type cell. Retrieve date and convert it to readable format and append to tmp_list with single quotes
             elif sh.name == 'Orders' and col in [2, 3]:
                 converted_date = datetime.datetime(*xl.xldate_as_tuple(int(sh.cell_value(rowx=row, colx=col)), book.datemode))
                 tmp_list.append(f'\'{converted_date.year}.{converted_date.month}.{converted_date.day}\'')
