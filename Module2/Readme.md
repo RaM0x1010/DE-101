@@ -11,7 +11,7 @@
 
   ## 2.4 Модели Данных
   ### Краткое описание задачи:
-  *Создать концептуальную, логическую и физическую модель данных проекта. С помощью редактора sqlDBM сгенерировать шаблон и выполнить в PostgreSQL, чтобы создать БД на оснвое Dimensional Model. После создания БД, загрузить данные посредством* <code>INSERT INTO SELECT</code> *запроса*.
+  *Создать концептуальную, логическую и физическую модель данных проекта. С помощью редактора sqlDBM сгенерировать шаблон и выполнить в PostgreSQL, чтобы создать БД на оснвое Dimensional Model. После создания БД, загрузить данные посредством*</br> <code>INSERT INTO SELECT</code> *запроса*.
   - [Conceptual_model.jpg](https://github.com/RaM0x1010/DE-101/blob/master/Module2/2.4/Conceptual_model.jpg) - концептуальная модель;
   - [Logical_model.jpg](https://github.com/RaM0x1010/DE-101/blob/master/Module2/2.4/Logical_model.jpg) - логическая модель;
   - [Physics_model.jpg](https://github.com/RaM0x1010/DE-101/blob/master/Module2/2.4/Physics_model.jpg) - физическая модель;
