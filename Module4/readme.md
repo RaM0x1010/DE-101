@@ -1,5 +1,6 @@
-## Модуль 4
+## РњРѕРґСѓР»СЊ 4
 
-:arrow_left: [К модулям](https://github.com/RaM0x1010/DE-101)
+:arrow_left: [Рљ РјРѕРґСѓР»СЏРј](https://github.com/RaM0x1010/DE-101)
 
-1. begin here
+1. begin here 1
+2. begin here 2
